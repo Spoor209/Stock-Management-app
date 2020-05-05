@@ -37,6 +37,16 @@ public class Article implements Serializable{
 	
 	
 	
+	
+	
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
 	public Article() {
 		
 	}
@@ -98,13 +108,7 @@ public class Article implements Serializable{
 		this.tauxTVA = tauxTVA;
 	}
 
-	public String getPhoto() {
-		return photo;
-	}
 
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
 
 	public Category getCategory() {
 		return category;

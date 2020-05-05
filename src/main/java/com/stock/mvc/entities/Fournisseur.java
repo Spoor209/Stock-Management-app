@@ -29,10 +29,18 @@ public class Fournisseur implements Serializable{
 	
 	private String adresse;
 	
-	private String photo;
-	
 	private String mail;
 	
+	private String photo;
+	
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
 	//One Fournisseur for Many commandes fournisseurs
 	@OneToMany(mappedBy = "fournisseur")
 	private List<CommandeFournisseur> commandeFournisseurs;
@@ -75,13 +83,6 @@ public class Fournisseur implements Serializable{
 		this.adresse = adresse;
 	}
 
-	public String getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
 
 	public String getMail() {
 		return mail;

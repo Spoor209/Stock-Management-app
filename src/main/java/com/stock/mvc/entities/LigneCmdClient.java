@@ -1,7 +1,7 @@
 package com.stock.mvc.entities;
 
 import java.io.Serializable;
-
+import java.math.BigDecimal;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
+
+
 
 @Entity
 @Table(name="ligne_commande_client")
@@ -33,9 +37,26 @@ public class LigneCmdClient implements Serializable{
 	@JoinColumn(name="idCmdClient")
 	private CommandeClient commandeClient;
 	
+	private BigDecimal quantite;
+	
+	private BigDecimal prixUnitaire;
 	
 	
-	
+	public BigDecimal getQuantite() {
+		return quantite;
+	}
+
+	public void setQuantite(BigDecimal quantite) {
+		this.quantite = quantite;
+	}
+
+	public BigDecimal getPrixUnitaire() {
+		return prixUnitaire;
+	}
+
+	public void setPrixUnitaire(BigDecimal prixUnitaire) {
+		this.prixUnitaire = prixUnitaire;
+	}
 
 	public Long getIdLigneCmdClient() {
 		return idLigneCmdClient;
@@ -45,6 +66,7 @@ public class LigneCmdClient implements Serializable{
 		this.idLigneCmdClient = idLigneCmdClient;
 	}
 
+    
 	public Article getArticle() {
 		return article;
 	}
@@ -53,6 +75,7 @@ public class LigneCmdClient implements Serializable{
 		this.article = article;
 	}
 
+	@JsonIgnore
 	public CommandeClient getCommandeClient() {
 		return commandeClient;
 	}

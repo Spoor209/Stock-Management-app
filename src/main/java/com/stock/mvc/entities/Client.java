@@ -7,17 +7,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 
 @Entity
-@Table(name="client")
 public class Client implements Serializable{
 
+	
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue
 	private Long idClient;
@@ -28,10 +31,18 @@ public class Client implements Serializable{
 	
 	private String adresse;
 	
-	private String photo;
-	
 	private String mail;
 	
+	private String photo;
+	
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
 	//One Client for many commandes clients
 	@OneToMany(mappedBy = "client")
 	private List<CommandeClient> commandeClients;
@@ -76,13 +87,6 @@ public class Client implements Serializable{
 		this.adresse = adresse;
 	}
 
-	public String getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
 
 	public String getMail() {
 		return mail;
@@ -92,6 +96,7 @@ public class Client implements Serializable{
 		this.mail = mail;
 	}
 
+	@JsonIgnore
 	public List<CommandeClient> getCommandeClients() {
 		return commandeClients;
 	}
